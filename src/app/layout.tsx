@@ -1,23 +1,46 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { ThemeProvider } from "next-themes";
-import "./globals.css";
+import { Space_Grotesk, DM_Sans } from "next/font/google";
+import { ThemeProvider } from "@/context";
+import "@/styles/globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+/* ========================================
+   FONT CONFIGURATION
+   ======================================== */
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
+  weight: ["500", "700"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  display: "swap",
 });
+
+/* ========================================
+   METADATA
+   ======================================== */
 
 export const metadata: Metadata = {
-  title: "Setrox – Personal Portfolio",
+  title: "Setrox – Developer Portfolio",
   description:
-    "Setrox.com is the personal portfolio of Setrox, showcasing projects, skills, and professional experience.",
+    "Setrox.com is the personal portfolio of Setrox, showcasing projects, skills, and professional experience in software development.",
+  keywords: ["developer", "portfolio", "software", "web development", "Setrox"],
+  authors: [{ name: "Setrox" }],
+  openGraph: {
+    title: "Setrox – Developer Portfolio",
+    description: "Personal portfolio showcasing projects and skills",
+    type: "website",
+  },
 };
+
+/* ========================================
+   ROOT LAYOUT
+   ======================================== */
 
 export default function RootLayout({
   children,
@@ -25,11 +48,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      data-accent="purple"
+      className="dark"
+    >
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${spaceGrotesk.variable} ${dmSans.variable} antialiased`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider defaultAccent="purple" defaultMode="dark">
           {children}
         </ThemeProvider>
       </body>

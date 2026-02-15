@@ -1,0 +1,275 @@
+/* ========================================
+   SETROX.COM - DESIGN TOKENS
+   Terminal-aesthetic developer portfolio
+   ======================================== */
+
+/* ----------------------------------------
+   1. BASE TOKENS (Theme-agnostic)
+   ---------------------------------------- */
+:root {
+  /* Neutral Scale */
+  --neutral-0: #ffffff;
+  --neutral-50: #fafafa;
+  --neutral-100: #f5f5f5;
+  --neutral-200: #e5e5e5;
+  --neutral-300: #d4d4d4;
+  --neutral-400: #a3a3a3;
+  --neutral-500: #737373;
+  --neutral-600: #525252;
+  --neutral-700: #404040;
+  --neutral-800: #262626;
+  --neutral-900: #171717;
+  --neutral-950: #0a0a0a;
+
+  /* Terminal Colors */
+  --terminal-green: #22c55e;
+  --terminal-green-dim: #15803d;
+  --terminal-amber: #f59e0b;
+  --terminal-red: #ef4444;
+  --terminal-blue: #3b82f6;
+  --terminal-cyan: #06b6d4;
+  --terminal-magenta: #d946ef;
+
+  /* Spacing Scale (8px base) */
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* Typography Scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
+
+  /* Line Heights */
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+
+  /* Letter Spacing */
+  --tracking-tighter: -0.05em;
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.1em;
+
+  /* Border Radius */
+  --radius-none: 0px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-glow: 0 0 40px -10px var(--accent-500);
+  --shadow-glow-sm: 0 0 20px -5px var(--accent-500);
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slower: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Z-Index Scale */
+  --z-base: 0;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal-backdrop: 400;
+  --z-modal: 500;
+  --z-popover: 600;
+  --z-tooltip: 700;
+  --z-cursor-glow: 9999;
+}
+
+/* ----------------------------------------
+   2. ACCENT COLOR THEMES
+   ---------------------------------------- */
+
+/* Purple Theme (Default) */
+[data-accent="purple"] {
+  --accent-50: #faf5ff;
+  --accent-100: #f3e8ff;
+  --accent-200: #e9d5ff;
+  --accent-300: #d8b4fe;
+  --accent-400: #c084fc;
+  --accent-500: #a855f7;
+  --accent-600: #9333ea;
+  --accent-700: #7e22ce;
+  --accent-800: #6b21a8;
+  --accent-900: #581c87;
+  --accent-950: #3b0764;
+}
+
+/* Cyan Theme */
+[data-accent="cyan"] {
+  --accent-50: #ecfeff;
+  --accent-100: #cffafe;
+  --accent-200: #a5f3fc;
+  --accent-300: #67e8f9;
+  --accent-400: #22d3ee;
+  --accent-500: #06b6d4;
+  --accent-600: #0891b2;
+  --accent-700: #0e7490;
+  --accent-800: #155e75;
+  --accent-900: #164e63;
+  --accent-950: #083344;
+}
+
+/* Golden Theme */
+[data-accent="golden"] {
+  --accent-50: #fffbeb;
+  --accent-100: #fef3c7;
+  --accent-200: #fde68a;
+  --accent-300: #fcd34d;
+  --accent-400: #fbbf24;
+  --accent-500: #f59e0b;
+  --accent-600: #d97706;
+  --accent-700: #b45309;
+  --accent-800: #92400e;
+  --accent-900: #78350f;
+  --accent-950: #451a03;
+}
+
+/* Emerald Theme */
+[data-accent="emerald"] {
+  --accent-50: #ecfdf5;
+  --accent-100: #d1fae5;
+  --accent-200: #a7f3d0;
+  --accent-300: #6ee7b7;
+  --accent-400: #34d399;
+  --accent-500: #10b981;
+  --accent-600: #059669;
+  --accent-700: #047857;
+  --accent-800: #065f46;
+  --accent-900: #064e3b;
+  --accent-950: #022c22;
+}
+
+/* Rose Theme */
+[data-accent="rose"] {
+  --accent-50: #fff1f2;
+  --accent-100: #ffe4e6;
+  --accent-200: #fecdd3;
+  --accent-300: #fda4af;
+  --accent-400: #fb7185;
+  --accent-500: #f43f5e;
+  --accent-600: #e11d48;
+  --accent-700: #be123c;
+  --accent-800: #9f1239;
+  --accent-900: #881337;
+  --accent-950: #4c0519;
+}
+
+/* ----------------------------------------
+   3. LIGHT/DARK MODE TOKENS
+   ---------------------------------------- */
+
+/* Light Mode (Default) */
+:root {
+  --bg-primary: var(--neutral-0);
+  --bg-secondary: var(--neutral-50);
+  --bg-tertiary: var(--neutral-100);
+  --bg-elevated: var(--neutral-0);
+  --bg-overlay: rgb(0 0 0 / 0.5);
+  --bg-glass: rgb(255 255 255 / 0.8);
+
+  --text-primary: var(--neutral-950);
+  --text-secondary: var(--neutral-600);
+  --text-tertiary: var(--neutral-400);
+  --text-inverse: var(--neutral-0);
+
+  --border-primary: var(--neutral-200);
+  --border-secondary: var(--neutral-100);
+  --border-focus: var(--accent-500);
+
+  --surface-default: var(--neutral-0);
+  --surface-hover: var(--neutral-50);
+  --surface-active: var(--neutral-100);
+  --surface-elevated: var(--neutral-0);
+}
+
+/* Dark Mode */
+.dark,
+[data-theme="dark"] {
+  --bg-primary: var(--neutral-950);
+  --bg-secondary: var(--neutral-900);
+  --bg-tertiary: var(--neutral-800);
+  --bg-elevated: var(--neutral-900);
+  --bg-overlay: rgb(0 0 0 / 0.8);
+  --bg-glass: rgb(23 23 23 / 0.8);
+
+  --text-primary: var(--neutral-50);
+  --text-secondary: var(--neutral-400);
+  --text-tertiary: var(--neutral-600);
+  --text-inverse: var(--neutral-950);
+
+  --border-primary: var(--neutral-800);
+  --border-secondary: var(--neutral-900);
+  --border-focus: var(--accent-400);
+
+  --surface-default: var(--neutral-900);
+  --surface-hover: var(--neutral-800);
+  --surface-active: var(--neutral-700);
+  --surface-elevated: var(--neutral-800);
+}
+
+/* ----------------------------------------
+   4. SEMANTIC TOKENS
+   ---------------------------------------- */
+:root {
+  /* Status Colors */
+  --status-success: var(--terminal-green);
+  --status-warning: var(--terminal-amber);
+  --status-error: var(--terminal-red);
+  --status-info: var(--terminal-blue);
+
+  /* Interactive States */
+  --interactive-default: var(--accent-500);
+  --interactive-hover: var(--accent-400);
+  --interactive-active: var(--accent-600);
+  --interactive-disabled: var(--neutral-400);
+
+  /* Code/Terminal Specific */
+  --code-bg: var(--neutral-900);
+  --code-text: var(--neutral-100);
+  --code-comment: var(--neutral-500);
+  --code-keyword: var(--accent-400);
+  --code-string: var(--terminal-green);
+  --code-number: var(--terminal-amber);
+  --code-function: var(--terminal-cyan);
+
+  /* Cursor Glow */
+  --cursor-glow-color: var(--accent-500);
+  --cursor-glow-size: 200px;
+  --cursor-glow-opacity: 0.15;
+}
