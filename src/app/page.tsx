@@ -1,7 +1,16 @@
 "use client";
 
-import { useTheme, AccentColor, getAccentDisplayName } from "@/context";
+import { useTheme, getAccentDisplayName } from "@/context";
 import { Moon, Sun, Palette } from "lucide-react";
+
+// Accent color hex values for preview swatches
+const ACCENT_COLORS: Record<string, string> = {
+  purple: "#a855f7",
+  cyan: "#06b6d4",
+  golden: "#f59e0b",
+  emerald: "#10b981",
+  rose: "#f43f5e",
+};
 
 export default function Home() {
   const {
@@ -89,7 +98,7 @@ export default function Home() {
                   <div
                     className="w-8 h-8 rounded-full transition-transform group-hover:scale-110"
                     style={{
-                      backgroundColor: `var(--${color === "purple" ? "accent-500" : color === "cyan" ? "accent-500" : color === "golden" ? "accent-500" : color === "emerald" ? "accent-500" : "accent-500"})`,
+                      backgroundColor: ACCENT_COLORS[color],
                     }}
                   />
                   <span className="text-xs font-medium text-text-secondary">

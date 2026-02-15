@@ -2,33 +2,6 @@ import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { renderHook, act, waitFor } from "@testing-library/react";
 import { ThemeProvider, useTheme, getAccentDisplayName, AccentColor } from "./ThemeContext";
 
-// Mock localStorage
-const localStorageMock = {
-  getItem: vi.fn(),
-  setItem: vi.fn(),
-  removeItem: vi.fn(),
-  clear: vi.fn(),
-};
-
-Object.defineProperty(window, "localStorage", {
-  value: localStorageMock,
-});
-
-// Mock matchMedia
-Object.defineProperty(window, "matchMedia", {
-  writable: true,
-  value: vi.fn().mockImplementation((query: string) => ({
-    matches: false,
-    media: query,
-    onchange: null,
-    addListener: vi.fn(),
-    removeListener: vi.fn(),
-    addEventListener: vi.fn(),
-    removeEventListener: vi.fn(),
-    dispatchEvent: vi.fn(),
-  })),
-});
-
 describe("ThemeContext", () => {
   beforeEach(() => {
     vi.clearAllMocks();
@@ -236,9 +209,18 @@ describe("ThemeContext", () => {
 
   describe("localStorage persistence", () => {
     it("should load saved preferences from localStorage", async () => {
-      localStorageMock.getItem.mockReturnValueOnce(
-        JSON.stringify({ accentColor: "golden", themeMode: "light" })
-      );
+      const localStorageMock = {
+        getItem: vi.fn().mockReturnValue(
+          JSON.stringify({ accentColor: "golden", themeMode: "light" })
+        ),
+        setItem: vi.fn(),
+        removeItem: vi.fn(),
+        clear: vi.fn(),
+      };
+      Object.defineProperty(window, "localStorage", {
+        value: localStorageMock,
+        writable: true,
+      });
 
       const wrapper = ({ children }: { children: React.ReactNode }) => (
         <ThemeProvider>{children}</ThemeProvider>
@@ -253,6 +235,18 @@ describe("ThemeContext", () => {
     });
 
     it("should save preferences to localStorage when changed", async () => {
+      const setItemMock = vi.fn();
+      const localStorageMock = {
+        getItem: vi.fn().mockReturnValue(null),
+        setItem: setItemMock,
+        removeItem: vi.fn(),
+        clear: vi.fn(),
+      };
+      Object.defineProperty(window, "localStorage", {
+        value: localStorageMock,
+        writable: true,
+      });
+
       const wrapper = ({ children }: { children: React.ReactNode }) => (
         <ThemeProvider>{children}</ThemeProvider>
       );
@@ -266,7 +260,7 @@ describe("ThemeContext", () => {
       });
 
       await waitFor(() => {
-        expect(localStorageMock.setItem).toHaveBeenCalledWith(
+        expect(setItemMock).toHaveBeenCalledWith(
           "setrox-theme",
           JSON.stringify({ accentColor: "rose", themeMode: "dark" })
         );
@@ -274,8 +268,17 @@ describe("ThemeContext", () => {
     });
 
     it("should handle localStorage errors gracefully", async () => {
-      localStorageMock.getItem.mockImplementationOnce(() => {
-        throw new Error("Storage error");
+      const localStorageMock = {
+        getItem: vi.fn().mockImplementation(() => {
+          throw new Error("Storage error");
+        }),
+        setItem: vi.fn(),
+        removeItem: vi.fn(),
+        clear: vi.fn(),
+      };
+      Object.defineProperty(window, "localStorage", {
+        value: localStorageMock,
+        writable: true,
       });
 
       const wrapper = ({ children }: { children: React.ReactNode }) => (

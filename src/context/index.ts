@@ -3,7 +3,6 @@ export {
   ThemeProvider,
   useTheme,
   getAccentDisplayName,
-  getAccentColorVariable,
 } from "./ThemeContext";
 
 export type {

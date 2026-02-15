@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, DM_Sans } from "next/font/google";
+import { Space_Grotesk, DM_Sans, Space_Mono } from "next/font/google";
 import { ThemeProvider } from "@/context";
 import "@/styles/globals.css";
 
@@ -18,6 +18,13 @@ const dmSans = DM_Sans({
   variable: "--font-dm-sans",
   subsets: ["latin"],
   weight: ["400", "500", "700"],
+  display: "swap",
+});
+
+const spaceMono = Space_Mono({
+  variable: "--font-space-mono",
+  subsets: ["latin"],
+  weight: ["400", "700"],
   display: "swap",
 });
 
@@ -55,7 +62,7 @@ export default function RootLayout({
       className="dark"
     >
       <body
-        className={`${spaceGrotesk.variable} ${dmSans.variable} antialiased`}
+        className={`${spaceGrotesk.variable} ${dmSans.variable} ${spaceMono.variable} antialiased`}
       >
         <ThemeProvider defaultAccent="purple" defaultMode="dark">
           {children}

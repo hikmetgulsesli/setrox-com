@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
 import {
@@ -83,27 +84,30 @@ export function ThemeProvider({
   defaultAccent = DEFAULT_ACCENT,
   defaultMode = DEFAULT_MODE,
 }: ThemeProviderProps) {
+  // Use defaults for SSR - actual values loaded after mount
   const [accentColor, setAccentColorState] = useState<AccentColor>(defaultAccent);
   const [themeMode, setThemeModeState] = useState<ThemeMode>(defaultMode);
-  const [isDark, setIsDark] = useState<boolean>(true);
+  const [isDark, setIsDark] = useState<boolean>(defaultMode === "dark" || defaultMode === "system");
   const [mounted, setMounted] = useState(false);
 
-  // Load saved preferences from localStorage - using useSyncExternalStore pattern
-  // We initialize with defaults and update after mount to avoid hydration mismatch
+  // Load saved preferences from localStorage after mount.
+  // We initialize with defaults on first render and then update post-mount to avoid hydration mismatch.
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      try {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
         const parsed = JSON.parse(saved);
+        // We intentionally call setState here to sync with external system (localStorage)
+        // This is the recommended pattern for initializing from storage
         if (parsed.accentColor && ACCENT_COLORS.includes(parsed.accentColor)) {
           setAccentColorState(parsed.accentColor);
         }
         if (parsed.themeMode && ["light", "dark", "system"].includes(parsed.themeMode)) {
           setThemeModeState(parsed.themeMode);
         }
-      } catch {
-        // Ignore localStorage errors
       }
+    } catch {
+      // Ignore localStorage errors
     }
     setMounted(true);
   }, []);
@@ -132,41 +136,20 @@ export function ThemeProvider({
     if (!mounted) return;
 
     const root = document.documentElement;
-    
-    const applyTheme = () => {
-      if (themeMode === "system") {
-        const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        setIsDark(systemDark);
-        if (systemDark) {
-          root.classList.add("dark");
-        } else {
-          root.classList.remove("dark");
-        }
-      } else {
-        setIsDark(themeMode === "dark");
-        if (themeMode === "dark") {
-          root.classList.add("dark");
-        } else {
-          root.classList.remove("dark");
-        }
-      }
+
+    const applyDarkClass = (isDarkValue: boolean) => {
+      setIsDark(isDarkValue);
+      root.classList.toggle("dark", isDarkValue);
     };
 
-    applyTheme();
-
-    // Listen for system theme changes
     if (themeMode === "system") {
       const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-      const handler = (e: MediaQueryListEvent) => {
-        setIsDark(e.matches);
-        if (e.matches) {
-          root.classList.add("dark");
-        } else {
-          root.classList.remove("dark");
-        }
-      };
+      applyDarkClass(mediaQuery.matches);
+      const handler = (e: MediaQueryListEvent) => applyDarkClass(e.matches);
       mediaQuery.addEventListener("change", handler);
       return () => mediaQuery.removeEventListener("change", handler);
+    } else {
+      applyDarkClass(themeMode === "dark");
     }
   }, [themeMode, mounted]);
 
@@ -199,15 +182,8 @@ export function ThemeProvider({
     availableAccents: ACCENT_COLORS,
   };
 
-  // Prevent flash of unstyled content
-  if (!mounted) {
-    return (
-      <div style={{ visibility: "hidden" }}>
-        {children}
-      </div>
-    );
-  }
-
+  // Always provide context value - don't hide children during SSR
+  // This ensures the context is available during prerendering
   return (
     <ThemeContext.Provider value={value}>
       {children}
@@ -231,11 +207,4 @@ export function getAccentDisplayName(color: AccentColor): string {
     rose: "Rose",
   };
   return names[color];
-}
-
-/**
- * Get the CSS variable value for an accent color
- */
-export function getAccentColorVariable(color: AccentColor, shade: number = 500): string {
-  return `var(--accent-${shade})`;
 }
