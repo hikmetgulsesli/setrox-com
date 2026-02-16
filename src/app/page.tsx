@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { ProjectsSection } from "@/components/sections/Projects";
+import { AgentsSection } from "@/components/sections/Agents";
 
 export default function Home() {
   return (
@@ -16,17 +17,7 @@ export default function Home() {
         <ProjectsSection />
 
         {/* Agents Section */}
-        <section id="agents" className="space-y-6 py-24">
-          <h2 
-            className="text-3xl font-bold tracking-tight"
-            style={{ fontFamily: "var(--font-space-grotesk)" }}
-          >
-            Agents
-          </h2>
-          <p className="text-muted-foreground">
-            The OpenClaw Team — 10 autonomous AI agents, each with a specialized role.
-          </p>
-        </section>
+        <AgentsSection />
 
         {/* Writing Section */}
         <section id="writing" className="space-y-6 py-24">

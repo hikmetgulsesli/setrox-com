@@ -13,3 +13,4 @@ export { Navbar } from "../layout/Navbar";
 // Section Components
 export { Hero } from "../sections/Hero";
 export { ProjectsSection } from "../sections/Projects";
+export { AgentsSection } from "../sections/Agents";
