@@ -1,0 +1,141 @@
+export type ProjectStatus = 'shipped' | 'in-progress' | 'archived';
+
+export interface Project {
+  id: string;
+  name: string;
+  year: number;
+  status: ProjectStatus;
+  description: string;
+  tags: string[];
+  liveUrl: string | null;
+  sourceUrl: string;
+}
+
+export const projects: Project[] = [
+  {
+    id: 'mission-control',
+    name: 'Mission Control',
+    year: 2026,
+    status: 'shipped',
+    description: 'AI-powered dashboard for managing autonomous agent systems',
+    tags: ['react', 'express', 'ai'],
+    liveUrl: 'https://ai.setrox.com.tr',
+    sourceUrl: 'https://github.com/hikmetgulsesli/mission-control',
+  },
+  {
+    id: 'antfarm-workflows',
+    name: 'Antfarm Workflows',
+    year: 2026,
+    status: 'shipped',
+    description: 'YAML-based workflow automation engine for CI/CD pipelines',
+    tags: ['automation', 'yaml', 'ci'],
+    liveUrl: 'https://antfarm.setrox.com.tr',
+    sourceUrl: 'https://github.com/hikmetgulsesli/antfarm-workflows',
+  },
+  {
+    id: 'restmenu',
+    name: 'RestMenu',
+    year: 2026,
+    status: 'in-progress',
+    description: 'Digital restaurant menu system with QR code ordering',
+    tags: ['next.js', 'restaurant', 'api'],
+    liveUrl: 'https://restmenu.setrox.com.tr',
+    sourceUrl: 'https://github.com/hikmetgulsesli/restmenu',
+  },
+  {
+    id: 'logpulse',
+    name: 'LogPulse',
+    year: 2026,
+    status: 'shipped',
+    description: 'Real-time log viewer with Server-Sent Events streaming',
+    tags: ['node', 'sse', 'logging'],
+    liveUrl: 'https://logpulse.setrox.com.tr',
+    sourceUrl: 'https://github.com/hikmetgulsesli/logpulse',
+  },
+  {
+    id: 'agent-viz',
+    name: 'AgentViz',
+    year: 2026,
+    status: 'shipped',
+    description: 'Interactive agent visualization dashboard using D3.js',
+    tags: ['react', 'd3', 'agents'],
+    liveUrl: 'https://agentviz.setrox.com.tr',
+    sourceUrl: 'https://github.com/hikmetgulsesli/agent-viz',
+  },
+  {
+    id: 'clawdocs',
+    name: 'ClawDocs',
+    year: 2026,
+    status: 'shipped',
+    description: 'Documentation platform with Markdown support and search',
+    tags: ['docs', 'markdown', 'search'],
+    liveUrl: 'https://clawdocs.setrox.com.tr',
+    sourceUrl: 'https://github.com/hikmetgulsesli/clawdocs',
+  },
+  {
+    id: 'statuspage',
+    name: 'StatusPage',
+    year: 2026,
+    status: 'shipped',
+    description: 'Uptime monitoring and status page generator',
+    tags: ['monitoring', 'uptime', 'status'],
+    liveUrl: 'https://statuspage.setrox.com.tr',
+    sourceUrl: 'https://github.com/hikmetgulsesli/statuspage',
+  },
+  {
+    id: 'discord-bot-arya',
+    name: 'Discord Bot (Arya)',
+    year: 2026,
+    status: 'shipped',
+    description: 'AI-powered Discord bot for community management',
+    tags: ['discord.js', 'ai', 'bot'],
+    liveUrl: null,
+    sourceUrl: 'https://github.com/hikmetgulsesli/discord-bot-arya',
+  },
+  {
+    id: 'pomodoro-timer',
+    name: 'Pomodoro Timer',
+    year: 2025,
+    status: 'shipped',
+    description: 'Minimalist productivity timer with task tracking',
+    tags: ['react', 'productivity', 'timer'],
+    liveUrl: 'https://pomodoro.setrox.com.tr',
+    sourceUrl: 'https://github.com/hikmetgulsesli/pomodoro-timer',
+  },
+  {
+    id: 'habit-tracker',
+    name: 'Habit Tracker',
+    year: 2025,
+    status: 'shipped',
+    description: 'Daily habit tracking app with streak visualization',
+    tags: ['react', 'wellness', 'tracking'],
+    liveUrl: 'https://habit.setrox.com.tr',
+    sourceUrl: 'https://github.com/hikmetgulsesli/habit-tracker',
+  },
+  {
+    id: 'typing-speed-test',
+    name: 'Typing Speed Test',
+    year: 2025,
+    status: 'shipped',
+    description: 'Minimalist typing test with WPM and accuracy metrics',
+    tags: ['vanilla-js', 'game', 'typing'],
+    liveUrl: 'https://typing.setrox.com.tr',
+    sourceUrl: 'https://github.com/hikmetgulsesli/typing-speed-test',
+  },
+  {
+    id: 'smart-ram-skill',
+    name: 'Smart RAM Skill',
+    year: 2025,
+    status: 'shipped',
+    description: 'Bash-based system monitoring tool for RAM usage',
+    tags: ['bash', 'monitoring', 'cli'],
+    liveUrl: null,
+    sourceUrl: 'https://github.com/hikmetgulsesli/smart-ram-skill',
+  },
+];
+
+// Dynamic counts - never hardcoded
+export const projectCount = projects.length;
+export const shippedProjects = projects.filter(p => p.status === 'shipped');
+export const inProgressProjects = projects.filter(p => p.status === 'in-progress');
+export const archivedProjects = projects.filter(p => p.status === 'archived');

@@ -1,0 +1,66 @@
+# Progress Log
+Run: 03437c16-1f3d-49d0-b443-291e972a818a
+Task: setrox.com portfolio site — Initialize Next.js 15 project with design tokens
+Started: 2026-02-16
+
+## Codebase Patterns
+- Project uses Next.js 15 with App Router and TypeScript
+- Tailwind CSS 4 with oklch color support via @import "tailwindcss"
+- Design tokens defined in globals.css with CSS custom properties
+- Theme configuration in src/lib/theme-config.ts with type-safe accent themes
+- Tests use node:test with node:assert (native Node.js testing)
+- Tests run with tsx: npx tsx src/lib/__tests__/*.test.ts
+- Fonts loaded via next/font/google (Space Grotesk + DM Sans)
+- Framer Motion installed for animations
+- Lucide React for icons
+- Build command: pnpm build
+- Test command: npx tsx src/lib/__tests__/*.test.ts
+- Data files stored in src/data/ with TypeScript interfaces
+- All counts derived from .length, never hardcoded
+
+---
+
+## 2026-02-16 11:57 - US-001: Project Setup and Design Tokens
+- Initialized Next.js 15 project with TypeScript and App Router
+- Configured Tailwind CSS 4 with oklch color support
+- Installed Framer Motion for animations
+- Created design tokens CSS file with --primary, --background, --card, --border, --foreground, --muted-foreground variables
+- Defined 5 accent themes (Purple, Cyan, Golden, Emerald, Rose) with oklch values per PRD
+- Set up light/dark mode neutral colors per PRD section 2.1
+- Loaded Space Grotesk and DM Sans fonts via next/font/google
+- Installed Lucide React icons
+- Created .env.example with placeholder values
+- Added .gitignore includes .env, node_modules, .next, out
+- Created src/lib/theme-config.ts with type-safe theme configuration
+- Wrote 18 tests for theme configuration - all passing
+- Typecheck passes, build succeeds
+- Files changed: src/app/globals.css, src/app/layout.tsx, src/app/page.tsx, src/lib/theme-config.ts, src/lib/__tests__/theme-config.test.ts
+- **Learnings:** 
+  - Tailwind CSS 4 uses @import "tailwindcss" instead of directives
+  - oklch color space works well for theming with perceptually uniform colors
+  - Use [data-accent] attribute selectors for accent theme overrides
+  - Node.js native test runner uses assert instead of expect
+
+---
+
+## 2026-02-16 12:05 - US-003: Data Layer - Projects and Agents
+- Created Project interface with name, year, status, tags, liveUrl, sourceUrl fields
+- Created src/data/projects.ts with all 12 projects from PRD section 3.3
+- Created Agent interface with name, role, model, description, color, icon fields
+- Created src/data/agents.ts with all 10 agents from PRD section 3.4
+- Created src/data/socials.ts with LinkedIn, X, GitHub links
+- Created src/data/index.ts for centralized exports
+- All array exports use .length for counts (projectCount, agentCount, socialCount)
+- Added filtered exports: shippedProjects, inProgressProjects, archivedProjects
+- Added agentsByModel for MiniMax/Kimi grouping
+- Wrote 22 tests for data structures (7 for projects, 9 for agents, 6 for socials)
+- Fixed existing TypeScript error in ThemeSwitcher.tsx (ringColor -> --tw-ring-color)
+- All tests pass, build succeeds
+- Files changed: src/data/projects.ts, src/data/agents.ts, src/data/socials.ts, src/data/index.ts, src/lib/__tests__/projects.test.ts, src/lib/__tests__/agents.test.ts, src/lib/__tests__/socials.test.ts, src/components/ui/ThemeSwitcher.tsx
+- **Learnings:**
+  - Use @/ path aliases for imports in tests when using tsx
+  - CSS custom properties in inline styles need type assertion: ['--prop' as string]
+  - Keep data files separate from components for better maintainability
+  - Always derive counts from .length to keep data DRY
+
+---

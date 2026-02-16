@@ -1,9 +1,26 @@
 import Link from "next/link";
+import { ThemeSwitcher } from "@/components/ui/ThemeSwitcher";
 
 export default function Home() {
   return (
     <div className="min-h-screen p-8">
       <main className="max-w-4xl mx-auto space-y-12">
+        {/* Header with Theme Switcher */}
+        <header className="flex items-center justify-between py-4">
+          <div className="flex items-center gap-3">
+            <div 
+              className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white"
+              style={{ backgroundColor: "var(--primary)" }}
+            >
+              HG
+            </div>
+            <span className="font-semibold text-lg" style={{ fontFamily: "var(--font-space-grotesk)" }}>
+              Setrox
+            </span>
+          </div>
+          <ThemeSwitcher />
+        </header>
+
         {/* Hero Section */}
         <section className="space-y-4">
           <p className="text-sm font-medium tracking-widest uppercase text-muted-foreground">
