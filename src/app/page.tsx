@@ -5,6 +5,7 @@ import { AgentsSection } from "@/components/sections/Agents";
 import { TechStackSection } from "@/components/sections/TechStack";
 import { TerminalSection } from "@/components/sections/Terminal";
 import { ContactSection } from "@/components/sections/Contact";
+import { Footer } from "@/components/sections/Footer";
 
 export default function Home() {
   return (
@@ -30,12 +31,10 @@ export default function Home() {
 
         {/* Contact Section */}
         <ContactSection />
-
-        {/* Footer */}
-        <footer className="pt-12 border-t text-center text-sm text-muted-foreground">
-          <p>© 2026 Hikmet Gulsesli — Built with OpenClaw · Powered by 10 AI agents</p>
-        </footer>
       </main>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
