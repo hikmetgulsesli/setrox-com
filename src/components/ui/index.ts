@@ -6,3 +6,6 @@ export { Badge } from "./Badge";
 export { ProgressBar } from "./ProgressBar";
 export { CursorGlow } from "./CursorGlow";
 export { ThemeSwitcher } from "./ThemeSwitcher";
+
+// Layout Components
+export { Navbar } from "../layout/Navbar";

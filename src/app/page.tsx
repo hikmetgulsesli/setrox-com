@@ -1,192 +1,71 @@
-import Link from "next/link";
-import { ThemeSwitcher } from "@/components/ui/ThemeSwitcher";
+import { Navbar } from "@/components/layout/Navbar";
 
 export default function Home() {
   return (
-    <div className="min-h-screen p-8">
-      <main className="max-w-4xl mx-auto space-y-12">
-        {/* Header with Theme Switcher */}
-        <header className="flex items-center justify-between py-4">
-          <div className="flex items-center gap-3">
-            <div 
-              className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white"
-              style={{ backgroundColor: "var(--primary)" }}
-            >
-              HG
-            </div>
-            <span className="font-semibold text-lg" style={{ fontFamily: "var(--font-space-grotesk)" }}>
-              Setrox
-            </span>
-          </div>
-          <ThemeSwitcher />
-        </header>
+    <div className="min-h-screen">
+      {/* Sticky Navigation Bar */}
+      <Navbar />
 
+      <main className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 space-y-24 pb-24">
         {/* Hero Section */}
-        <section className="space-y-4">
-          <p className="text-sm font-medium tracking-widest uppercase text-muted-foreground">
+        <section id="home" className="pt-12 space-y-6">
+          <p className="text-sm font-medium tracking-widest uppercase text-muted-foreground" style={{ fontFamily: "var(--font-space-grotesk)" }}>
             Developer & AI Architect
           </p>
           <h1 
-            className="text-5xl font-bold tracking-tight"
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight"
             style={{ fontFamily: "var(--font-space-grotesk)" }}
           >
             Hikmet Gulsesli
           </h1>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-xl text-muted-foreground max-w-2xl">
             Building autonomous AI agent systems with{" "}
             <span className="text-primary font-medium">OpenClaw</span>.
           </p>
         </section>
 
-        {/* Design Tokens Demo */}
-        <section className="space-y-6">
+        {/* Projects Section */}
+        <section id="projects" className="space-y-6">
           <h2 
-            className="text-2xl font-semibold"
+            className="text-3xl font-bold tracking-tight"
             style={{ fontFamily: "var(--font-space-grotesk)" }}
           >
-            Design Tokens
+            Projects
           </h2>
-          
-          {/* Color Swatches */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="space-y-2">
-              <div 
-                className="h-20 rounded-lg border"
-                style={{ backgroundColor: "var(--background)" }}
-              />
-              <p className="text-sm text-muted-foreground">Background</p>
-            </div>
-            <div className="space-y-2">
-              <div 
-                className="h-20 rounded-lg border"
-                style={{ backgroundColor: "var(--card)" }}
-              />
-              <p className="text-sm text-muted-foreground">Card</p>
-            </div>
-            <div className="space-y-2">
-              <div 
-                className="h-20 rounded-lg"
-                style={{ backgroundColor: "var(--primary)" }}
-              />
-              <p className="text-sm text-muted-foreground">Primary</p>
-            </div>
-            <div className="space-y-2">
-              <div 
-                className="h-20 rounded-lg border"
-                style={{ backgroundColor: "var(--border)" }}
-              />
-              <p className="text-sm text-muted-foreground">Border</p>
-            </div>
-          </div>
-
-          {/* Status Colors */}
-          <div className="flex gap-4">
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded-full bg-accent-green" />
-              <span className="text-sm text-muted-foreground">Running</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded-full bg-accent-yellow" />
-              <span className="text-sm text-muted-foreground">In Progress</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded-full bg-accent-red" />
-              <span className="text-sm text-muted-foreground">Error</span>
-            </div>
-          </div>
+          <p className="text-muted-foreground">
+            Projects & Open Source — 12+ projects. 10 agents running across the ecosystem.
+          </p>
         </section>
 
-        {/* Typography Demo */}
-        <section className="space-y-4">
+        {/* Agents Section */}
+        <section id="agents" className="space-y-6">
           <h2 
-            className="text-2xl font-semibold"
+            className="text-3xl font-bold tracking-tight"
             style={{ fontFamily: "var(--font-space-grotesk)" }}
           >
-            Typography
+            Agents
           </h2>
-          <div className="space-y-2 p-6 rounded-xl border bg-card">
-            <h3 
-              className="text-xl font-semibold"
-              style={{ fontFamily: "var(--font-space-grotesk)" }}
-            >
-              Space Grotesk — Heading Font
-            </h3>
-            <p className="text-muted-foreground">
-              DM Sans — Body font for readable paragraphs and UI text.
-              This demonstrates the font pair working together.
-            </p>
-          </div>
+          <p className="text-muted-foreground">
+            The OpenClaw Team — 10 autonomous AI agents, each with a specialized role.
+          </p>
         </section>
 
-        {/* Interactive Elements */}
-        <section className="space-y-4">
+        {/* Writing Section */}
+        <section id="writing" className="space-y-6">
           <h2 
-            className="text-2xl font-semibold"
+            className="text-3xl font-bold tracking-tight"
             style={{ fontFamily: "var(--font-space-grotesk)" }}
           >
-            Interactive Elements
+            Writing
           </h2>
-          <div className="flex flex-wrap gap-4">
-            <button 
-              className="px-6 py-3 rounded-lg font-medium text-white cursor-pointer transition-transform duration-200 hover:scale-105 focus-visible:ring-2 focus-visible:ring-offset-2"
-              style={{ backgroundColor: "var(--primary)" }}
-            >
-              Primary Button
-            </button>
-            
-            <button 
-              className="px-6 py-3 rounded-lg font-medium border cursor-pointer transition-all duration-200 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-offset-2"
-              style={{ 
-                borderColor: "var(--border)",
-                backgroundColor: "var(--card)"
-              }}
-            >
-              Secondary Button
-            </button>
-            
-            <Link 
-              href="/"
-              className="px-6 py-3 rounded-lg font-medium text-primary underline-offset-4 hover:underline cursor-pointer"
-            >
-              Text Link
-            </Link>
-          </div>
-        </section>
-
-        {/* Accent Themes */}
-        <section className="space-y-4">
-          <h2 
-            className="text-2xl font-semibold"
-            style={{ fontFamily: "var(--font-space-grotesk)" }}
-          >
-            Accent Themes (5 variants)
-          </h2>
-          <div className="grid grid-cols-5 gap-4">
-            {[
-              { name: "Purple", hue: 295, color: "oklch(0.55 0.25 295)" },
-              { name: "Cyan", hue: 195, color: "oklch(0.55 0.15 195)" },
-              { name: "Golden", hue: 85, color: "oklch(0.60 0.16 85)" },
-              { name: "Emerald", hue: 165, color: "oklch(0.55 0.17 165)" },
-              { name: "Rose", hue: 20, color: "oklch(0.55 0.20 20)" },
-            ].map((theme) => (
-              <div key={theme.name} className="text-center space-y-2">
-                <div 
-                  className="w-full aspect-square rounded-full border-2"
-                  style={{ 
-                    backgroundColor: theme.color,
-                    borderColor: "var(--border)"
-                  }}
-                />
-                <p className="text-sm font-medium">{theme.name}</p>
-                <p className="text-xs text-muted-foreground">H{theme.hue}</p>
-              </div>
-            ))}
-          </div>
+          <p className="text-muted-foreground">
+            Thoughts on AI, development, and building autonomous systems.
+          </p>
         </section>
 
         {/* Footer */}
-        <footer className="pt-8 border-t text-center text-sm text-muted-foreground">
-          <p>© 2026 Hikmet Gulsesli — Built with OpenClaw</p>
+        <footer className="pt-12 border-t text-center text-sm text-muted-foreground">
+          <p>© 2026 Hikmet Gulsesli — Built with OpenClaw · Powered by {10} AI agents</p>
         </footer>
       </main>
     </div>
