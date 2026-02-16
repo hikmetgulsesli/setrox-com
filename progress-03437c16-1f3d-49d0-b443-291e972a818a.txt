@@ -234,3 +234,53 @@ Started: 2026-02-16
   - text-wrap: balance helps distribute heading text evenly across lines
 
 ---
+
+## 2026-02-16 13:04 - US-011: Tech Stack Section
+
+### Implemented
+- Created `src/components/sections/TechStack.tsx` with:
+  - Section header with STACK heading and "Built With" subtitle
+  - Horizontal scrollable container with 14 technology badges
+  - Technologies: Node.js, React, Python, Docker, PostgreSQL, Tailscale, Cloudflare, Grafana, Prometheus, Discord.js, n8n, Ollama, Next.js, Express
+  - Each badge: Lucide icon + name in glassmorphism style (backdrop-blur-md, semi-transparent bg)
+  - Hover effects: scale-105 and border color change with primary color
+  - No links - purely visual display with cursor-default
+  - Staggered entrance animations using Framer Motion (delay: index * 0.03s)
+  - Custom easing (cubic-bezier 0.16, 1, 0.3, 1) for smooth entrance
+  - Hidden scrollbar with CSS (scrollbarWidth: none, ::-webkit-scrollbar display: none)
+  - Full accessibility: aria-hidden on decorative icons, semantic section element
+  - Responsive design: section padding scales with breakpoints
+
+- Updated `src/app/page.tsx`:
+  - Import and use TechStackSection component
+  - Placed after TerminalSection
+
+- Updated `src/components/ui/index.ts`:
+  - Export TechStackSection from sections
+
+- Created comprehensive tests in `src/lib/__tests__/tech-stack-section.test.ts`:
+  - 37 tests covering component structure, section header, technology badges
+  - Icons validation (14 Lucide icons mapped to technologies)
+  - Glassmorphism styling (backdrop-blur, semi-transparent bg)
+  - Horizontal scroll container (overflow-x-auto, flex layout)
+  - Hover effects (scale, border color, transitions)
+  - Animations (motion.div, staggered entrance, custom easing)
+  - Accessibility (aria-hidden, semantic section, heading hierarchy)
+  - Visual display (cursor-default, primary color icons, flex-shrink-0)
+  - Responsive design (padding, heading sizes)
+  - All tests pass
+
+### Files Changed
+- src/components/sections/TechStack.tsx (new)
+- src/app/page.tsx (updated)
+- src/components/ui/index.ts (updated)
+- src/lib/__tests__/tech-stack-section.test.ts (new)
+
+### Learnings
+- Horizontal scroll containers need flex-shrink-0 on children to prevent squishing
+- Hide scrollbar cross-browser: scrollbarWidth: 'none', msOverflowStyle: 'none', and ::-webkit-scrollbar
+- Staggered animations with small delay (0.03s) create a wave-like entrance effect
+- Glassmorphism: combine backdrop-blur with semi-transparent background using CSS variables
+- cursor-default indicates non-interactive elements while maintaining clean UX
+
+---

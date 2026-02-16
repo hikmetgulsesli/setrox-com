@@ -4,6 +4,7 @@ import { ProjectsSection } from "@/components/sections/Projects";
 import { AgentsSection } from "@/components/sections/Agents";
 import { TechStackSection } from "@/components/sections/TechStack";
 import { TerminalSection } from "@/components/sections/Terminal";
+import { ContactSection } from "@/components/sections/Contact";
 
 export default function Home() {
   return (
@@ -27,18 +28,8 @@ export default function Home() {
         {/* Tech Stack Section */}
         <TechStackSection />
 
-        {/* Writing Section */}
-        <section id="writing" className="space-y-6 py-24">
-          <h2 
-            className="text-3xl font-bold tracking-tight"
-            style={{ fontFamily: "var(--font-space-grotesk)" }}
-          >
-            Writing
-          </h2>
-          <p className="text-muted-foreground">
-            Thoughts on AI, development, and building autonomous systems.
-          </p>
-        </section>
+        {/* Contact Section */}
+        <ContactSection />
 
         {/* Footer */}
         <footer className="pt-12 border-t text-center text-sm text-muted-foreground">

@@ -16,3 +16,4 @@ export { ProjectsSection } from "../sections/Projects";
 export { AgentsSection } from "../sections/Agents";
 export { TechStackSection } from "../sections/TechStack";
 export { TerminalSection } from "../sections/Terminal";
+export { ContactSection } from "../sections/Contact";
