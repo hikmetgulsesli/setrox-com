@@ -116,3 +116,40 @@ Started: 2026-02-16
   - CSS transitions on width/height are acceptable for state changes (not continuous animation)
 
 ---
+
+## 2026-02-16 12:19 - US-005: UI Components - Card, Badge, ProgressBar
+- Created Card component in src/components/ui/Card.tsx with:
+  - Glassmorphism background using backdrop-blur-md and semi-transparent bg-[var(--card)]/80
+  - Border using var(--border) CSS custom property
+  - Rounded-xl (1.5rem/24px radius)
+  - Hover lift effect with hover:-translate-y-1 (transform only, 200ms transition)
+  - cursor-pointer when onClick is provided
+  - Subcomponents: CardHeader, CardTitle, CardDescription, CardContent, CardFooter
+- Created Badge component in src/components/ui/Badge.tsx with variants:
+  - shipped: green (#22c55e) with status dot
+  - in-progress: yellow (#eab308) with status dot
+  - archived: muted colors using var(--muted-foreground), var(--card), var(--border)
+  - default: uses var(--primary) for theming
+- Created ProgressBar component in src/components/ui/ProgressBar.tsx with:
+  - Animated width from 0% to target using Framer Motion (0.8s duration, spring easing)
+  - Color coding: 100% green, 75-99% cyan, 50-74% yellow, <50% red
+  - Shimmer animation using background-position keyframes in globals.css
+  - Size variants: sm (h-1), md (h-2), lg (h-3)
+  - Optional value label display
+  - ARIA attributes for accessibility (role=progressbar, aria-valuenow, etc.)
+- Added shimmer keyframes animation to globals.css (2s linear infinite)
+- Created src/lib/utils.ts with cn() utility for className merging
+- Installed clsx and tailwind-merge dependencies
+- Created src/components/ui/index.ts for centralized component exports
+- Wrote 94 tests total: 25 for Card, 29 for Badge, 40 for ProgressBar
+- All tests pass (total: 103 tests across all stories)
+- Typecheck passes, build succeeds
+- Files changed: src/components/ui/Card.tsx, src/components/ui/Badge.tsx, src/components/ui/ProgressBar.tsx, src/components/ui/index.ts, src/lib/utils.ts, src/app/globals.css, package.json, pnpm-lock.yaml
+- **Learnings:**
+  - Use cn() utility from clsx + tailwind-merge for clean className composition
+  - Shimmer effect works best with background-position animation on a linear-gradient
+  - Framer Motion's initial/animate props provide smooth entrance animations
+  - CSS custom properties enable runtime theming without recompilation
+  - ARIA attributes on progress bars improve screen reader experience
+
+---
