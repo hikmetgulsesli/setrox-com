@@ -153,3 +153,43 @@ Started: 2026-02-16
   - ARIA attributes on progress bars improve screen reader experience
 
 ---
+
+## 2026-02-16 12:26 - US-006: Navigation Bar Component
+- Created Navbar component in src/components/layout/Navbar.tsx with:
+  - Sticky top with glassmorphism effect (backdrop-blur(12px) + semi-transparent bg)
+  - Logo: HG circle monogram + Setrox wordmark with hover scale effect
+  - Nav links: HOME (>HOME), PROJECTS, AGENTS, WRITING in uppercase Geist Mono style
+  - Active section indicator with underline that updates on scroll
+  - Theme controls: palette icon dropdown (5 color circles) + sun/moon toggle
+  - Social icons: LinkedIn, X (custom SVG), GitHub using Lucide icons
+  - Status badge: green pulsing dot (animate-ping) + {agentCount} agents live
+  - Mobile hamburger menu with slide-out drawer containing nav + social links
+  - Smooth scroll to sections with 80px offset for navbar height
+  - Keyboard accessible: Escape closes menus, focus-visible rings on all controls
+  - Click outside to close dropdowns
+  - Hydration-safe with skeleton loaders during initial load
+- Updated src/components/ui/index.ts to export Navbar
+- Updated src/app/page.tsx to use Navbar with section anchors (#home, #projects, etc.)
+- Wrote 29 tests for Navbar in src/lib/__tests__/navbar.test.ts covering:
+  - Agent count for status badge (dynamic from agents.length)
+  - Social links structure and validity
+  - Navigation links structure (uppercase, anchor hrefs)
+  - Theme configuration (5 accent themes)
+  - Glassmorphism requirements
+  - Responsive breakpoints
+  - Accessibility requirements (ARIA labels, semantic nav, Escape key)
+  - Smooth scroll requirements
+  - Status badge requirements
+- All 220 tests pass (9 agents + 29 badge + 25 card + 21 cursor-glow + 29 navbar + 40 progress-bar + 7 projects + 6 socials + 18 theme-config + 21 theme-context + 15 data)
+- Typecheck passes, build succeeds
+- Files changed: src/components/layout/Navbar.tsx, src/components/ui/index.ts, src/app/page.tsx, src/lib/__tests__/navbar.test.ts
+- **Learnings:**
+  - Use oklch(from var(--card) l c h / 0.6) for glassmorphism backgrounds
+  - Combine sticky positioning with backdrop-filter for modern navbar effect
+  - Use scroll event with { passive: true } for better performance
+  - Calculate scroll offset: elementPosition + window.pageYOffset - navbarHeight
+  - Use aria-hidden on decorative elements, aria-label on interactive ones
+  - Mobile drawer pattern: fixed overlay + slide-out panel with click-outside handler
+  - Prevent body scroll when mobile menu is open: document.body.style.overflow = "hidden"
+
+---
