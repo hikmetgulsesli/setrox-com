@@ -8,6 +8,8 @@ Started: 2026-02-16
 - Tailwind CSS 4 with oklch color support via @import "tailwindcss"
 - Design tokens defined in globals.css with CSS custom properties
 - Theme configuration in src/lib/theme-config.ts with type-safe accent themes
+- Theme context in src/lib/theme-context.tsx for accent color management
+- Combined providers in src/lib/providers.tsx (next-themes + accent theme)
 - Tests use node:test with node:assert (native Node.js testing)
 - Tests run with tsx: npx tsx src/lib/__tests__/*.test.ts
 - Fonts loaded via next/font/google (Space Grotesk + DM Sans)
@@ -17,6 +19,7 @@ Started: 2026-02-16
 - Test command: npx tsx src/lib/__tests__/*.test.ts
 - Data files stored in src/data/ with TypeScript interfaces
 - All counts derived from .length, never hardcoded
+- localStorage keys: 'theme' for light/dark, 'color-theme' for accent
 
 ---
 
@@ -40,6 +43,30 @@ Started: 2026-02-16
   - oklch color space works well for theming with perceptually uniform colors
   - Use [data-accent] attribute selectors for accent theme overrides
   - Node.js native test runner uses assert instead of expect
+
+---
+
+## 2026-02-16 12:06 - US-002: Theme Context and Switching System
+- Created ThemeProvider context in src/lib/theme-context.tsx for accent color management
+- Integrated next-themes for light/dark mode toggle via src/lib/providers.tsx
+- Implemented localStorage persistence for both accent theme ('color-theme') and light/dark mode ('theme')
+- Created ThemeSwitcher component in src/components/ui/ThemeSwitcher.tsx with:
+  - Palette dropdown with 5 color circle buttons (Purple, Cyan, Golden, Emerald, Rose)
+  - Sun/Moon icon toggle for light/dark mode
+  - Keyboard accessible (Escape to close, focus-visible rings)
+  - Click outside to close dropdown
+- Implemented inline style injection for accent color overrides on html element via applyAccentTheme()
+- Theme selections persist across page reloads via localStorage
+- Wrote 21 tests for theme switching functionality in src/lib/__tests__/theme-context.test.ts
+- All 39 tests pass (18 theme-config + 21 theme-context)
+- Typecheck passes, build succeeds
+- Files changed: src/lib/theme-context.tsx, src/lib/providers.tsx, src/components/ui/ThemeSwitcher.tsx, src/app/layout.tsx, src/app/page.tsx, src/lib/__tests__/theme-context.test.ts
+- **Learnings:**
+  - Use MutationObserver to detect dark mode class changes on documentElement
+  - Apply CSS custom properties via inline style for immediate theme changes
+  - Derive glow colors from primary using string manipulation: primary.replace(")", " / 0.12)")
+  - Always check typeof window !== "undefined" before accessing localStorage
+  - Use suppressHydrationWarning on html element to avoid hydration mismatches
 
 ---
 
