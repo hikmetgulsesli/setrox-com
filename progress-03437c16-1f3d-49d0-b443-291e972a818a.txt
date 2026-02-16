@@ -193,3 +193,44 @@ Started: 2026-02-16
   - Prevent body scroll when mobile menu is open: document.body.style.overflow = "hidden"
 
 ---
+
+## 2026-02-16 12:37 - US-007: Hero Section Component
+- Created Hero component in src/components/sections/Hero.tsx with:
+  - Superscript label: DEVELOPER & AI ARCHITECT in uppercase, letter-spaced (tracking-[0.25em])
+  - H1: Hikmet Gulsesli with gradient text using var(--primary) via bg-gradient-to-r
+  - Subtitle: — Founder of OpenClaw with em-dash prefix
+  - Tagline with typing animation on "that work while you sleep" portion using Framer Motion
+  - TypingEffect subcomponent with character-by-character fade-in and blinking cursor
+  - Two ASCII art terminal boxes: AsciiBox (┌─┐ style) and FancyAsciiBox (╔═╗ style)
+  - OpenClaw stats displayed: agents, projects, uptime, status (from data files)
+  - CTA buttons: explore projects (filled primary) + meet the agents (outlined)
+  - Stats row: {agentCount} Agents · {projectCount}+ Projects · 20GB Server with Lucide icons
+  - Fade-in-up entrance animation with Framer Motion (staggerChildren: 0.1s, duration: 0.6s)
+  - Smooth scroll to sections on button clicks with 80px navbar offset
+  - Full accessibility: aria-label on buttons, aria-hidden on decorative icons
+  - Responsive design: text sizes scale, terminal boxes stack on mobile, buttons stack on mobile
+- Updated src/components/ui/index.ts to export Hero component
+- Updated src/app/page.tsx to use Hero component
+- Added primary-foreground CSS variable to globals.css for button text contrast
+- Wrote 43 tests for Hero component in src/lib/__tests__/hero.test.ts covering:
+  - Superscript label requirements (uppercase, letter-spacing, color)
+  - H1 gradient text (Space Grotesk font, bg-clip-text, text-transparent)
+  - Subtitle with em-dash prefix
+  - Tagline typing animation (Framer Motion, character stagger)
+  - ASCII art terminal boxes (monospace font, primary color borders, stats display)
+  - CTA buttons (filled/outlined styles, cursor-pointer, hover states, focus-visible rings)
+  - Stats row (dynamic counts from data, separator dots, Lucide icons)
+  - Fade-in-up animation (Framer Motion, stagger, spring easing)
+  - Accessibility (aria-labels, semantic HTML, anchor navigation)
+  - Responsive design (breakpoint-based layouts)
+- All 43 tests pass
+- Typecheck passes, build succeeds
+- Files changed: src/components/sections/Hero.tsx, src/components/ui/index.ts, src/app/page.tsx, src/app/globals.css, src/lib/__tests__/hero.test.ts
+- **Learnings:**
+  - Use text.split("").map() with staggered delay for typing animation effect
+  - ASCII art boxes need careful spacing calculation for alignment
+  - Framer Motion's variants with staggerChildren creates elegant entrance animations
+  - bg-gradient-to-r with from-primary via-primary to-primary/60 creates nice gradient fade
+  - text-wrap: balance helps distribute heading text evenly across lines
+
+---

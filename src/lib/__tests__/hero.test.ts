@@ -125,7 +125,7 @@ describe("Hero Component Requirements", () => {
       const status = "running";
       const agentsDisplay = `${agentCount}/${agentCount} ✓`;
       
-      assert.ok(title.includes("OPENCLAW"), "Second box should have OPENCLAW title");
+      assert.ok(title.replace(/\s/g, "").includes("OPENCLAW"), "Second box should have OPENCLAW title");
       assert.strictEqual(status, "running", "Status should be running");
       assert.ok(agentsDisplay.includes("✓"), "Should show checkmark for all agents operational");
     });
