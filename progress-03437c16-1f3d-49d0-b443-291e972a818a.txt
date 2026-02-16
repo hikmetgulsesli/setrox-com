@@ -91,3 +91,28 @@ Started: 2026-02-16
   - Always derive counts from .length to keep data DRY
 
 ---
+
+## 2026-02-16 12:13 - US-004: CursorGlow Component
+- Created CursorGlow component in src/components/ui/CursorGlow.tsx with:
+  - Dual-layer implementation: outer glow (400px) + inner dot (32px)
+  - Outer glow expands to 500px on interactive elements (a, button, [role=button], input)
+  - Uses requestAnimationFrame for smooth 60fps position updates with lerp interpolation
+  - Hidden on mobile via `hidden lg:block` classes
+  - Glow color uses `var(--primary)` CSS variable for theme adaptation
+  - Mouseleave hides glow, mouseenter shows it with smooth opacity transition
+  - `pointer-events-none` to avoid blocking interactions
+  - `aria-hidden` for accessibility on decorative elements
+  - `will-change-transform` and `translate3d` for GPU acceleration
+- Integrated CursorGlow into src/app/layout.tsx within Providers
+- Wrote 21 tests for CursorGlow component in src/lib/__tests__/cursor-glow.test.ts
+- All 21 tests pass
+- Typecheck passes, build succeeds
+- Files changed: src/components/ui/CursorGlow.tsx, src/app/layout.tsx, src/lib/__tests__/cursor-glow.test.ts
+- **Learnings:**
+  - Use refs to store position/state to avoid re-renders during animation
+  - Lerp interpolation (0.12 factor) provides smooth follow effect without lag
+  - Check for interactive elements using `element.closest()` with multiple selectors
+  - Always cleanup RAF on unmount to prevent memory leaks
+  - CSS transitions on width/height are acceptable for state changes (not continuous animation)
+
+---

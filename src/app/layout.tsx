@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, DM_Sans } from "next/font/google";
 import { Providers } from "@/lib/providers";
+import { CursorGlow } from "@/components/ui/CursorGlow";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -45,6 +46,7 @@ export default function RootLayout({
         className={`${spaceGrotesk.variable} ${dmSans.variable} antialiased`}
       >
         <Providers>
+          <CursorGlow />
           {children}
         </Providers>
       </body>

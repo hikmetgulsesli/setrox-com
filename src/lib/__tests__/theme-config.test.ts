@@ -13,7 +13,7 @@ import {
   isValidAccentTheme,
   getThemeConfig,
   type AccentTheme,
-} from "../theme-config.ts";
+} from "../theme-config";
 
 describe("Theme Configuration", () => {
   describe("accentThemes", () => {
