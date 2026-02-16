@@ -2,6 +2,8 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { ProjectsSection } from "@/components/sections/Projects";
 import { AgentsSection } from "@/components/sections/Agents";
+import { TechStackSection } from "@/components/sections/TechStack";
+import { TerminalSection } from "@/components/sections/Terminal";
 
 export default function Home() {
   return (
@@ -18,6 +20,12 @@ export default function Home() {
 
         {/* Agents Section */}
         <AgentsSection />
+
+        {/* Terminal Section */}
+        <TerminalSection />
+
+        {/* Tech Stack Section */}
+        <TechStackSection />
 
         {/* Writing Section */}
         <section id="writing" className="space-y-6 py-24">
