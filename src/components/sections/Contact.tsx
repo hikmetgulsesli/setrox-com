@@ -177,6 +177,7 @@ export function ContactSection() {
               "transition-all duration-200",
               "cursor-pointer"
             )}
+            aria-label="Subscribe to newsletter"
           >
             Subscribe →
           </button>
