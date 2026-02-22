@@ -7,11 +7,11 @@ import { inProgressProjects } from "@/data/projects";
 
 // Terminal project data with progress percentages
 const terminalProjects = [
-  { name: "RestMenu", progress: 75, description: "Digital restaurant menu system" },
-  { name: "AI Chat Interface", progress: 45, description: "Conversational UI for agents" },
-  { name: "Analytics Dashboard", progress: 90, description: "Real-time metrics visualization" },
-  { name: "Mobile App", progress: 30, description: "React Native companion app" },
-  { name: "API Gateway", progress: 100, description: "Unified API management layer" },
+  { name: "mission-control", progress: 92, description: "AI-powered agent dashboard" },
+  { name: "antfarm-workflows", progress: 100, description: "Workflow automation engine" },
+  { name: "restmenu", progress: 68, description: "Digital restaurant menu system" },
+  { name: "agent-viz", progress: 95, description: "Interactive agent visualization" },
+  { name: "logpulse", progress: 100, description: "Real-time log viewer with SSE" },
 ];
 
 // Commands to type at the bottom
@@ -195,7 +195,7 @@ export function TerminalSection() {
             "text-3xl sm:text-4xl font-bold tracking-tight mb-4",
             "text-[var(--foreground)]"
           )}
-          style={{ fontFamily: "var(--font-space-grotesk)" }}
+          style={{ fontFamily: "var(--font-geist-mono)" }}
         >
           TERMINAL
         </h2>

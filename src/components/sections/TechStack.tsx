@@ -105,7 +105,7 @@ export function TechStackSection() {
             "text-3xl sm:text-4xl font-bold tracking-tight mb-4",
             "text-[var(--foreground)]"
           )}
-          style={{ fontFamily: "var(--font-space-grotesk)" }}
+          style={{ fontFamily: "var(--font-geist-sans)" }}
         >
           STACK
         </h2>

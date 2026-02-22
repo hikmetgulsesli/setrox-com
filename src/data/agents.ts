@@ -43,7 +43,7 @@ export const agents: Agent[] = [
   },
   {
     id: 'kaan',
-    name: 'Kaan',
+    name: 'Flux',
     role: 'Sr. FS',
     model: 'Kimi K2.5',
     description: 'Full-stack feature development and code implementation',
@@ -61,7 +61,7 @@ export const agents: Agent[] = [
   },
   {
     id: 'defne',
-    name: 'Defne',
+    name: 'Iris',
     role: 'Research',
     model: 'MiniMax M2.5',
     description: 'Technical research and solution exploration',
@@ -70,7 +70,7 @@ export const agents: Agent[] = [
   },
   {
     id: 'sinan',
-    name: 'Sinan',
+    name: 'Sentinel',
     role: 'QA/CR',
     model: 'MiniMax M2.5',
     description: 'Quality assurance and code review specialist',
@@ -79,7 +79,7 @@ export const agents: Agent[] = [
   },
   {
     id: 'elif',
-    name: 'Elif',
+    name: 'Cipher',
     role: 'Backend',
     model: 'Kimi K2.5',
     description: 'Server-side development and API design',
@@ -88,7 +88,7 @@ export const agents: Agent[] = [
   },
   {
     id: 'deniz',
-    name: 'Deniz',
+    name: 'Lux',
     role: 'Content',
     model: 'MiniMax M2.5',
     description: 'Content creation and documentation writing',
@@ -97,7 +97,7 @@ export const agents: Agent[] = [
   },
   {
     id: 'onur',
-    name: 'Onur',
+    name: 'Nexus',
     role: 'SRE',
     model: 'MiniMax M2.5',
     description: 'Site reliability engineering and system monitoring',
@@ -106,7 +106,7 @@ export const agents: Agent[] = [
   },
   {
     id: 'mert',
-    name: 'Mert',
+    name: 'Prism',
     role: 'Frontend',
     model: 'MiniMax M2.5',
     description: 'UI/UX implementation and component development',

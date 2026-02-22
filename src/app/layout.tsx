@@ -1,22 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, DM_Sans } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import { Providers } from "@/lib/providers";
 import { CursorGlow } from "@/components/ui/CursorGlow";
 import "./globals.css";
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  display: "swap",
-});
-
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Hikmet Gulsesli — Developer & AI Architect | setrox.com",
@@ -65,7 +52,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <body
-        className={`${spaceGrotesk.variable} ${dmSans.variable} antialiased`}
+        className={`${GeistSans.variable} ${GeistMono.variable} antialiased scanlines`}
       >
         <a href="#main-content" className="skip-link">
           Skip to main content

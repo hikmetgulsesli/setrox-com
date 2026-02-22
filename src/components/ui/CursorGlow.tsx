@@ -69,8 +69,8 @@ export function CursorGlow() {
 
     const handleMouseEnter = () => {
       isVisibleRef.current = true;
-      if (outerGlowRef.current) outerGlowRef.current.style.opacity = "1";
-      if (innerDotRef.current) innerDotRef.current.style.opacity = "1";
+      if (outerGlowRef.current) outerGlowRef.current.style.opacity = "0.6";
+      if (innerDotRef.current) innerDotRef.current.style.opacity = "0.15";
     };
 
     const handleMouseLeave = () => {
@@ -114,9 +114,9 @@ export function CursorGlow() {
           width: "400px",
           height: "400px",
           borderRadius: "50%",
-          background: `radial-gradient(circle, var(--primary) 0%, transparent 70%)`,
+          background: `radial-gradient(circle, oklch(from var(--primary) l c h / 0.15) 0%, transparent 70%)`,
           opacity: 0,
-          filter: "blur(60px)",
+          filter: "blur(40px)",
           transition: "opacity 200ms ease-out, width 300ms ease-out, height 300ms ease-out",
         }}
         aria-hidden="true"
@@ -130,9 +130,10 @@ export function CursorGlow() {
           width: "32px",
           height: "32px",
           borderRadius: "50%",
-          backgroundColor: "var(--primary)",
+          background: "radial-gradient(circle, var(--primary) 0%, transparent 70%)",
           opacity: 0,
-          filter: "blur(8px)",
+          filter: "blur(4px)",
+          mixBlendMode: "screen" as const,
           transition: "opacity 200ms ease-out",
         }}
         aria-hidden="true"

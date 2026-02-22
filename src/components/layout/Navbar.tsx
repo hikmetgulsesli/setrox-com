@@ -238,7 +238,7 @@ export function Navbar() {
               </div>
               <span 
                 className="font-bold text-lg tracking-wide text-foreground transition-colors duration-200 group-hover:text-primary"
-                style={{ fontFamily: "var(--font-space-grotesk)" }}
+                style={{ fontFamily: "var(--font-geist-sans)" }}
               >
                 Setrox
               </span>
@@ -256,7 +256,7 @@ export function Navbar() {
                       ? "text-primary" 
                       : "text-muted-foreground hover:text-foreground"
                   }`}
-                  style={{ fontFamily: "var(--font-space-grotesk)" }}
+                  style={{ fontFamily: "var(--font-geist-sans)" }}
                 >
                   {link.label}
                   {activeSection === link.id && (
@@ -285,7 +285,7 @@ export function Navbar() {
                 </span>
                 <span 
                   className="text-xs font-medium text-muted-foreground"
-                  style={{ fontFamily: "var(--font-space-grotesk)" }}
+                  style={{ fontFamily: "var(--font-geist-sans)" }}
                 >
                   {agentCount} agents live
                 </span>
@@ -337,7 +337,7 @@ export function Navbar() {
                     >
                       <p 
                         className="mb-2 text-xs font-medium text-muted-foreground uppercase tracking-wider"
-                        style={{ fontFamily: "var(--font-space-grotesk)" }}
+                        style={{ fontFamily: "var(--font-geist-sans)" }}
                       >
                         Accent Color
                       </p>
@@ -445,7 +445,7 @@ export function Navbar() {
             </span>
             <span 
               className="text-sm font-medium text-muted-foreground"
-              style={{ fontFamily: "var(--font-space-grotesk)" }}
+              style={{ fontFamily: "var(--font-geist-sans)" }}
             >
               {agentCount} agents live
             </span>
@@ -463,7 +463,7 @@ export function Navbar() {
                     ? "text-primary bg-primary/10 border border-primary/20" 
                     : "text-muted-foreground hover:text-foreground hover:bg-card border border-transparent"
                 }`}
-                style={{ fontFamily: "var(--font-space-grotesk)" }}
+                style={{ fontFamily: "var(--font-geist-sans)" }}
               >
                 {link.label}
               </Link>
@@ -474,7 +474,7 @@ export function Navbar() {
           <div className="mt-auto">
             <p 
               className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-3 px-4"
-              style={{ fontFamily: "var(--font-space-grotesk)" }}
+              style={{ fontFamily: "var(--font-geist-sans)" }}
             >
               Connect
             </p>

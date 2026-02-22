@@ -200,7 +200,7 @@ export function Hero({ className }: HeroProps) {
         <motion.div variants={itemVariants}>
           <span 
             className="inline-block text-xs sm:text-sm font-medium tracking-[0.25em] uppercase text-muted-foreground"
-            style={{ fontFamily: "var(--font-space-grotesk)" }}
+            style={{ fontFamily: "var(--font-geist-sans)" }}
           >
             Developer & AI Architect
           </span>
@@ -210,10 +210,10 @@ export function Hero({ className }: HeroProps) {
         <motion.h1 
           variants={itemVariants}
           className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight"
-          style={{ fontFamily: "var(--font-space-grotesk)" }}
+          style={{ fontFamily: "var(--font-geist-sans)" }}
         >
           <span 
-            className="bg-gradient-to-r from-primary via-primary to-primary/60 bg-clip-text text-transparent"
+            className="bg-gradient-to-r from-primary via-primary/80 to-primary/40 bg-clip-text text-transparent"
             style={{ textWrap: "balance" }}
           >
             Hikmet Gulsesli
@@ -224,7 +224,7 @@ export function Hero({ className }: HeroProps) {
         <motion.p 
           variants={itemVariants}
           className="text-lg sm:text-xl text-muted-foreground"
-          style={{ fontFamily: "var(--font-space-grotesk)" }}
+          style={{ fontFamily: "var(--font-geist-sans)" }}
         >
           — Founder of OpenClaw
         </motion.p>
@@ -270,7 +270,7 @@ export function Hero({ className }: HeroProps) {
               "group inline-flex items-center justify-center gap-2 px-6 py-3",
               "bg-primary text-primary-foreground font-medium rounded-lg",
               "transition-all duration-200 ease-out",
-              "hover:opacity-90 hover:scale-[1.02]",
+              "hover:opacity-90 hover:scale-105",
               "active:scale-[0.98]",
               "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
               "cursor-pointer"

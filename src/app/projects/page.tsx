@@ -274,7 +274,7 @@ export default function ProjectsPage() {
           {/* Page title */}
           <span 
             className="text-sm font-medium tracking-widest text-[var(--foreground)]"
-            style={{ fontFamily: "var(--font-space-grotesk)" }}
+            style={{ fontFamily: "var(--font-geist-sans)" }}
           >
             ALL PROJECTS
           </span>
@@ -292,7 +292,7 @@ export default function ProjectsPage() {
               "text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4",
               "text-[var(--foreground)]"
             )}
-            style={{ fontFamily: "var(--font-space-grotesk)" }}
+            style={{ fontFamily: "var(--font-geist-sans)" }}
           >
             PROJECTS
           </h1>

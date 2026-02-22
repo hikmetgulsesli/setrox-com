@@ -121,7 +121,7 @@ export function ContactSection() {
             "bg-gradient-to-r from-[var(--primary)] to-[var(--primary)]/60",
             "bg-clip-text text-transparent"
           )}
-          style={{ fontFamily: "var(--font-space-grotesk)" }}
+          style={{ fontFamily: "var(--font-geist-sans)" }}
         >
           Let&apos;s build autonomous systems together
         </h2>

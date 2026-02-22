@@ -55,17 +55,17 @@ function AgentCard({ agent, index }: AgentCardProps) {
         "flex flex-col"
       )}
       style={{
-        // Agent-specific hover border color via CSS custom property
         ["--agent-hover-color" as string]: agent.color,
       }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.borderColor = agent.color;
+        e.currentTarget.style.boxShadow = `0 0 20px ${agent.color}33`;
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.borderColor = '';
+        e.currentTarget.style.boxShadow = '';
+      }}
     >
-      {/* Hover border glow effect */}
-      <style jsx>{`
-        article:hover {
-          border-color: var(--agent-hover-color);
-          box-shadow: 0 0 20px color-mix(in srgb, var(--agent-hover-color) 20%, transparent);
-        }
-      `}</style>
 
       {/* Header: Emoji icon and status dot */}
       <div className="flex items-start justify-between mb-3">
@@ -74,7 +74,7 @@ function AgentCard({ agent, index }: AgentCardProps) {
           className={cn(
             "w-8 h-8 flex items-center justify-center",
             "text-2xl transition-transform duration-200 ease-out",
-            "group-hover:scale-110"
+            "group-hover:scale-125 group-hover:animate-bounce"
           )}
           aria-hidden="true"
         >
@@ -172,7 +172,7 @@ export function AgentsSection() {
             "text-3xl sm:text-4xl font-bold tracking-tight mb-4",
             "text-[var(--foreground)]"
           )}
-          style={{ fontFamily: "var(--font-space-grotesk)" }}
+          style={{ fontFamily: "var(--font-geist-sans)" }}
         >
           AGENTS
         </h2>
