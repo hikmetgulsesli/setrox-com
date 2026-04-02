@@ -1,0 +1,53 @@
+:root {
+  /* Primary Colors */
+  --color-primary: #4edea3;
+  --color-primary-hover: #3bc48a;
+  --color-primary-active: #2aa876;
+  
+  /* Error Colors */
+  --color-error: #ffb4ab;
+  --color-error-hover: #ff9a8e;
+  
+  /* Background Colors */
+  --color-background: #0c1324;
+  --color-surface: #191f31;
+  --color-surface-hover: #232a3d;
+  
+  /* Text Colors */
+  --color-on-surface: #dce1fb;
+  --color-on-surface-muted: #9aa3c2;
+  --color-on-primary: #0c1324;
+  
+  /* Border Colors */
+  --color-border: #2a3147;
+  --color-border-hover: #3a4159;
+  
+  /* Fonts */
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 350ms ease;
+}
