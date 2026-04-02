@@ -1,121 +1,83 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState, useEffect } from 'react';
+import { CounterDisplay } from './components/CounterDisplay';
+import { CounterButtons } from './components/CounterButtons';
+import { ErrorBanner } from './components/ErrorBanner';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(() => {
+    const saved = localStorage.getItem('sayac-v4-count');
+    return saved ? parseInt(saved, 10) : 0;
+  });
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('sayac-v4-count', count.toString());
+      setError(null);
+    } catch (e) {
+      setError('localStorage yazma hatası');
+    }
+  }, [count]);
+
+  const increment = () => setCount(c => c + 1);
+  const decrement = () => setCount(c => c - 1);
+  const reset = () => setCount(0);
+
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Prevent default for handled keys to avoid page scroll
+      if (['ArrowUp', 'ArrowDown', '+', '-', 'r', 'R'].includes(e.key)) {
+        e.preventDefault();
+      }
+
+      switch (e.key) {
+        case 'ArrowUp':
+        case '+':
+          increment();
+          break;
+        case 'ArrowDown':
+        case '-':
+          decrement();
+          break;
+        case 'r':
+        case 'R':
+          reset();
+          break;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className="min-h-screen bg-[#0c1324] text-[#dce1fb] font-['Inter'] flex flex-col items-center justify-center p-6">
+      <ErrorBanner message={error} onDismiss={() => setError(null)} />
+      
+      <div className="w-full max-w-2xl flex flex-col items-center gap-8">
+        <CounterDisplay count={count} />
+        <CounterButtons 
+          onIncrement={increment}
+          onDecrement={decrement}
+          onReset={reset}
+        />
+        
+        {/* Keyboard Shortcuts Legend */}
+        <div className="flex items-center gap-3 mt-8">
+          <div className="flex gap-2">
+            <kbd className="px-2 py-1 rounded bg-[#191f31] border border-[#2a3147] text-[10px] font-bold text-[#9aa3c2] font-mono">↑</kbd>
+            <kbd className="px-2 py-1 rounded bg-[#191f31] border border-[#2a3147] text-[10px] font-bold text-[#9aa3c2] font-mono">↓</kbd>
+            <kbd className="px-2 py-1 rounded bg-[#191f31] border border-[#2a3147] text-[10px] font-bold text-[#9aa3c2] font-mono">R</kbd>
+          </div>
+          <span className="text-[10px] font-medium text-[#9aa3c2] uppercase tracking-widest font-['Inter']">
+            Klavye Kısayolları
+          </span>
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
